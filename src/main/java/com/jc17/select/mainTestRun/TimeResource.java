@@ -35,5 +35,6 @@ public class TimeResource {
         formatter.setTimeZone(timeZone);
         String formatted = formatter.format(new Date());
         return new Time(formatted).toString();
+        
     }
 }
