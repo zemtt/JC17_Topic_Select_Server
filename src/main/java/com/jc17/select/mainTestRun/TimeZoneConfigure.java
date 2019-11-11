@@ -1,5 +1,4 @@
-package com.jc17.select.main;
-
+package com.jc17.select.mainTestRun;
 
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;

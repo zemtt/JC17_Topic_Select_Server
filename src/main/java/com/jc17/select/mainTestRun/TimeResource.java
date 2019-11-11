@@ -1,4 +1,5 @@
-package com.jc17.select.main;
+package com.jc17.select.mainTestRun;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,9 +12,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.google.common.base.Optional;
 
-/**
- * Created by 10184538 on 2018/9/8.
- */
 @Path("/time")
 @Produces(MediaType.APPLICATION_JSON)
 public class TimeResource {
