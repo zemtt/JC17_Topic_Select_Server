@@ -1,11 +1,11 @@
-package com.jc17.select.serverCore.resources.time;
+package com.jc17.select.serverCore;
 
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TimeZoneConfigure extends Configuration {
+public class AppConfigure extends Configuration {
     @NotEmpty
     @JsonProperty
     private String defaultTimezone;

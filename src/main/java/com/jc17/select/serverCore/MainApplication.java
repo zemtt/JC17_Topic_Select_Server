@@ -1,7 +1,6 @@
 package com.jc17.select.serverCore;
 
 import com.jc17.select.serverCore.resources.time.TimeResource;
-import com.jc17.select.serverCore.resources.time.TimeZoneConfigure;
 import com.jc17.select.serverCore.userAuth.SysUser;
 import com.jc17.select.serverCore.userAuth.UserAuthenticator;
 import com.jc17.select.serverCore.userAuth.UserAuthorizer;
@@ -13,7 +12,7 @@ import io.dropwizard.setup.Bootstrap;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 
-public class MainApplication extends Application<TimeZoneConfigure> {
+public class MainApplication extends Application<AppConfigure> {
     public static void main(String[] args) throws Exception {
         new MainApplication().run(args);
     }
@@ -23,8 +22,8 @@ public class MainApplication extends Application<TimeZoneConfigure> {
     }
 
     @Override
-    public void run(TimeZoneConfigure timeZoneConfigure, io.dropwizard.setup.Environment environment) throws Exception {
-        environment.jersey().register(new TimeResource(timeZoneConfigure.getDefaultTimezone()));
+    public void run(AppConfigure configure, io.dropwizard.setup.Environment environment) throws Exception {
+        // 身份验证
         environment.jersey().register(new AuthDynamicFeature(
                 new BasicCredentialAuthFilter.Builder<SysUser>()
                         .setAuthenticator(new UserAuthenticator())
@@ -33,6 +32,10 @@ public class MainApplication extends Application<TimeZoneConfigure> {
                         .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(SysUser.class));
+
+        // 时间资源
+        environment.jersey().register(new TimeResource(configure.getDefaultTimezone()));
+
 
 
     }
