@@ -1,4 +1,4 @@
-package com.jc17.select.mainTestRun;
+package com.jc17.select.serverCore.resources.time;
 
 public class Time extends Object {
     private String t;

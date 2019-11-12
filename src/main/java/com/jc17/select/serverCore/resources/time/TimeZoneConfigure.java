@@ -1,4 +1,4 @@
-package com.jc17.select.mainTestRun;
+package com.jc17.select.serverCore.resources.time;
 
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
