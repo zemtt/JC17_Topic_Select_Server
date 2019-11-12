@@ -1,6 +1,6 @@
 package com.jc17.select.serverCore;
 
-import com.jc17.select.serverCore.resources.time.TimeResource;
+import com.jc17.select.serverCore.resources.test.TestResource;
 import com.jc17.select.serverCore.userAuth.SysUser;
 import com.jc17.select.serverCore.userAuth.UserAuthenticator;
 import com.jc17.select.serverCore.userAuth.UserAuthorizer;
@@ -34,8 +34,7 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(SysUser.class));
 
         // 时间资源
-        environment.jersey().register(new TimeResource(configure.getDefaultTimezone()));
-
+        environment.jersey().register(new TestResource());
 
 
     }
