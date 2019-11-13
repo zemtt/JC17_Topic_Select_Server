@@ -1,8 +1,10 @@
 package com.jc17.select.dao;
 
+import java.sql.Date;
+
 public class Commu {
     private String commu_id;
-    private String comtime;
+    private Date comtime;
     private String sender_id;
     private String receiver_id;
     private String contient;
@@ -16,11 +18,11 @@ public class Commu {
         this.commu_id = commu_id;
     }
 
-    public String getComtime() {
+    public Date getComtime() {
         return comtime;
     }
 
-    public void setComtime(String comtime) {
+    public void setComtime(Date comtime) {
         this.comtime = comtime;
     }
 
