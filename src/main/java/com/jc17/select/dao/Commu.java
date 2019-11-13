@@ -7,8 +7,8 @@ public class Commu {
     private Date comtime;
     private String sender_id;
     private String receiver_id;
-    private String contient;
-
+    private String content;
+    private int readed;
 
     public String getCommu_id() {
         return commu_id;
@@ -42,11 +42,15 @@ public class Commu {
         this.receiver_id = receiver_id;
     }
 
-    public String getContient() {
-        return contient;
+    public String getContent() {
+        return content;
     }
 
-    public void setContient(String contient) {
-        this.contient = contient;
+    public void setContent(String content) {
+        this.content = content;
     }
+
+    public int getReaded() { return readed; }
+
+    public void setReaded(int readed) { this.readed = readed; }
 }
