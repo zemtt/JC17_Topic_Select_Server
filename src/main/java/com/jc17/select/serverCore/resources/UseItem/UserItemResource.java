@@ -11,7 +11,9 @@ import com.jc17.select.serverCore.resources.test.Test;
 import com.jc17.select.serverCore.userAuth.SysUser;
 import io.dropwizard.auth.Auth;
 
-import com.jc17.select.dao.
+import com.jc17.select.dao.User_table;
+import com.jc17.select.dao.User_tableDao;
+import com.jc17.select.dao.GetConn;
 
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
@@ -19,8 +21,14 @@ public class UserItemResource {
     public UserItemResource(){ }
 
     @GET
-    public Test getTest(@QueryParam("timezone") Optional timezone , @Auth SysUser user) {
-
-        return new Test(user);
+    public String getTest(@Auth SysUser user) {
+        User_table user_ = new User_table();
+        user_.setUser_id("hdsahudsba");
+        user_.setRights(1);
+        user_.setPassword("ssss");
+        user_.setUser_account(user.getName());
+        GetConn conn=new GetConn("jc17","jc172019","topic_select");
+        User_tableDao dao = new User_tableDao(conn.GetConnection());
+        return "success!";
     }
 }
