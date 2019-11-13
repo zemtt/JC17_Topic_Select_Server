@@ -7,6 +7,7 @@ public class Report {
     private String repattribute;
     private float score;
     private int marked;
+    private String content;
 
     public String getReport_id() {
         return report_id;
@@ -55,4 +56,9 @@ public class Report {
     public void setMarked(int marked) {
         this.marked = marked;
     }
+
+
+    public String getContent() { return content; }
+
+    public void setContent(String content) { this.content = content; }
 }
