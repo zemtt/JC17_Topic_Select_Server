@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Operation_logDao {
     private static Connection conn=null;
-    public Operation_logDao(Connection conn)
+    public Operation_logDao()
     {
-        this.conn=conn;
+        this.conn = new GetConn().GetConnection();
     }
 
     private static final String INSERT_OPERATIONLOG_SQL="INSERT INTO OPERATION_LOG VALUES(?,?.?,?,?)";
@@ -72,7 +72,7 @@ public class Operation_logDao {
         try{
             pstm = conn.prepareStatement(GET_BY_ID_OPERATIONLOG_SQL);
             pstm.setString(1,operationLog_id);
-            rs = pstm.executeQuery(GET_BY_ID_OPERATIONLOG_SQL);
+            rs = pstm.executeQuery();
             if(rs.next()) {
                 operation_log.setOplog_id(rs.getString("OPLOG_ID"));
                 operation_log.setUser_id(rs.getString("USER_ID"));
@@ -95,14 +95,12 @@ public class Operation_logDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try{
-            pstm = conn.prepareStatement(GET_OPERATIONLOG_SQL);
-            rs = pstm.executeQuery(GET_OPERATIONLOG_SQL);
             String finalsql = null;
             if(sql.equals("")){
                 finalsql = GET_OPERATIONLOG_SQL;
             }
             else{
-                finalsql= GET_OPERATIONLOG_SQL+ "WHERE" + sql;
+                finalsql= GET_OPERATIONLOG_SQL+ " WHERE " + sql;
             }
             rs = pstm.executeQuery(finalsql);
             while(rs.next()) {

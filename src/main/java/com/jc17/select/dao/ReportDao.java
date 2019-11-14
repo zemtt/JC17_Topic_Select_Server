@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ReportDao {
     private static Connection conn=null;
-    public ReportDao(Connection conn)
+    public ReportDao()
     {
-        this.conn=conn;
+        this.conn = new GetConn().GetConnection();
     }
 
     private static final String INSERT_REPORT_SQL="INSERT INTO REPORT VALUES(?,?,?,?,?,?,?)";
@@ -76,7 +76,7 @@ public class ReportDao {
         try{
             pstm = conn.prepareStatement(GET_BY_ID_REPORT_SQL);
             pstm.setString(1,reportId);
-            rs = pstm.executeQuery(GET_BY_ID_REPORT_SQL);
+            rs = pstm.executeQuery();
             if(rs.next()) {
                 report.setReport_id(rs.getString("REPORT_ID"));
                 report.setS_id(rs.getString("S_ID"));
@@ -101,14 +101,12 @@ public class ReportDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try{
-            pstm = conn.prepareStatement(GET_REPORT_SQL);
-            rs = pstm.executeQuery(GET_REPORT_SQL);
             String finalsql = null;
             if(sql.equals("")){
                 finalsql = GET_REPORT_SQL;
             }
             else{
-                finalsql= GET_REPORT_SQL+ "WHERE" + sql;
+                finalsql= GET_REPORT_SQL+ " WHERE " + sql;
             }
             rs = pstm.executeQuery(finalsql);
             while(rs.next()) {

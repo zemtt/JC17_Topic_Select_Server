@@ -8,9 +8,9 @@ import java.util.List;
 
 public class SelectDao {
     private static Connection conn=null;
-    public SelectDao(Connection conn)
+    public SelectDao()
     {
-        this.conn=conn;
+        this.conn = new GetConn().GetConnection();
     }
 
     private static final String INSERT_SELECT_SQL="INSERT INTO SELECT VALUES(?,?,?,?)";
@@ -70,7 +70,7 @@ public class SelectDao {
         try{
             pstm = conn.prepareStatement(GET_BY_ID_SELECT_SQL);
             pstm.setString(1,select_id);
-            rs = pstm.executeQuery(GET_BY_ID_SELECT_SQL);
+            rs = pstm.executeQuery();
             if(rs.next()) {
                 select.setSelect_id(rs.getString("SELECT_ID"));
                 select.setS_id(rs.getString("S_ID"));
@@ -92,14 +92,12 @@ public class SelectDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try{
-            pstm = conn.prepareStatement(GET_SELECT_SQL);
-            rs = pstm.executeQuery(GET_SELECT_SQL);
             String finalsql = null;
             if(sql.equals("")){
                 finalsql = GET_SELECT_SQL;
             }
             else{
-                finalsql= GET_SELECT_SQL + "WHERE" + sql;
+                finalsql= GET_SELECT_SQL + " WHERE " + sql;
             }
             rs = pstm.executeQuery(finalsql);
             while(rs.next()) {

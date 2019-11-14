@@ -74,7 +74,7 @@ public class CommuDao {
         try{
             pstm = conn.prepareStatement(GET_BY_ID_COMMU_SQL);
             pstm.setString(1,commu_id);
-            rs = pstm.executeQuery(GET_BY_ID_COMMU_SQL);
+            rs = pstm.executeQuery();
             if(rs.next()) {
                 commu.setCommu_id(rs.getString("COMMU_ID"));
                 commu.setComtime(rs.getDate("COTIME"));
@@ -98,14 +98,12 @@ public class CommuDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try{
-            pstm = conn.prepareStatement(GET_COMMU_SQL);
-            rs = pstm.executeQuery(GET_COMMU_SQL);
             String finalsql = null;
             if(sql.equals("")){
                 finalsql = GET_COMMU_SQL;
             }
             else{
-                finalsql=GET_COMMU_SQL + "WHERE" + sql;
+                finalsql=GET_COMMU_SQL + " WHERE " + sql;
             }
             rs = pstm.executeQuery(finalsql);
             while(rs.next()) {

@@ -9,9 +9,9 @@ import java.util.List;
 
 public class MajorDao {
     private static Connection conn=null;
-    public  MajorDao(Connection conn)
+    public  MajorDao()
     {
-        this.conn=conn;
+        this.conn = new GetConn().GetConnection();
     }
 
     private static final String INSERT_MAJOR_SQL="INSERT INTO MAJOR VALUES(?,?)";
@@ -67,7 +67,7 @@ public class MajorDao {
         try{
             pstm = conn.prepareStatement(GET_BY_ID_Major_SQL);
             pstm.setString(1,major_id);
-            rs = pstm.executeQuery(GET_BY_ID_Major_SQL);
+            rs = pstm.executeQuery();
             if(rs.next()) {
                 major.setMajor_id(rs.getString("MAJOR_ID"));
                 major.setMajor_name(rs.getString("MAJOR_NAME"));
@@ -87,14 +87,12 @@ public class MajorDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try{
-            pstm = conn.prepareStatement(GET_Major_SQL);
-            rs = pstm.executeQuery(GET_Major_SQL);
             String finalsql = null;
             if(sql.equals("")){
                 finalsql = GET_Major_SQL;
             }
             else{
-                finalsql=GET_Major_SQL + "WHERE" + sql;
+                finalsql=GET_Major_SQL + " WHERE " + sql;
             }
             rs = pstm.executeQuery(finalsql);
             while(rs.next()) {
