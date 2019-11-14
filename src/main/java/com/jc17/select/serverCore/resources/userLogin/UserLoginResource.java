@@ -10,6 +10,7 @@ import com.google.common.base.Optional;
 import com.jc17.select.dao.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
+import com.jc17.select.serverCore.resources.utils.Token;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class UserLoginResource {
                 returnObj.setError_code(0);
                 Map<String, Object> dataValue = new HashMap<>();
                 dataValue.put("state", 1);
-                dataValue.put("userid", findResult.get(0).getUser_id());
+                dataValue.put("token", Token.makeAToken(findResult.get(0).getUser_id()));
                 returnObj.setData(dataValue);
             } else {
                 returnObj.setError_code(0);

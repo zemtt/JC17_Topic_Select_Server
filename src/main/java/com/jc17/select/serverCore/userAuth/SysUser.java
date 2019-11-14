@@ -1,9 +1,13 @@
 package com.jc17.select.serverCore.userAuth;
 
+import com.jc17.select.dao.User_table;
+import com.jc17.select.dao.User_tableDao;
+import com.jc17.select.serverCore.resources.utils.Token;
+
 import java.security.Principal;
 
 public class SysUser implements Principal {
-    private String userName;
+    private String userId;
     private boolean checked = false;
     private int userType = -1;
 
@@ -11,14 +15,23 @@ public class SysUser implements Principal {
         return true;
     }
 
-    public SysUser(String userName, String passWord) {
-        this.userName = userName;
-        this.checked = CheckUser(userName, passWord);
+    public SysUser(String token) {
+        String[] res = new Token().analyzeAToken(token);
+        userId = res[1];
+        User_tableDao dao = new User_tableDao();
+        try {
+            User_table user = dao.get_User_Table("USER_ID='"+userId+"'").get(0);
+            userType = user.getRights();
+            checked = true;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public String getName() {
-        return userName;
+        return userId;
     }
 
     public boolean isChecked(){
