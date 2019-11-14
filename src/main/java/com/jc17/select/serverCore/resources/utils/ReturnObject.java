@@ -1,4 +1,4 @@
-package com.jc17.select.serverCore.resources.Utils.ReturnObject;
+package com.jc17.select.serverCore.resources.utils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

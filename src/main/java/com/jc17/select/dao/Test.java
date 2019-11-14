@@ -4,9 +4,8 @@ package com.jc17.select.dao;
 import java.sql.Date;
 
 public class Test {
-    public static void main(String args[])
-    {
-        GetConn conn=new GetConn("jc17","jc172019","topic_select");
+    public static void main(String args[]) {
+//        GetConn conn=new GetConn("jc17","jc172019","topic_select");
 
 //        Student student=new Student();
 //        student.setSex("男");
@@ -32,13 +31,13 @@ public class Test {
 //        commu.setReceiver_id("fdsaf");
 //        commu.setContient("fdassfa");
 
-        CommuDao commuDao= new CommuDao(conn.GetConnection());
+//        CommuDao commuDao= new CommuDao(conn.GetConnection());
 //        commuDao.insert_Commu(commu);
 //
 //        commu.setSender_id("00000");
 //        commuDao.update_Commu(commu);
 
-        commuDao.delete_Commu("1");
+//        commuDao.delete_Commu("1");
 
 
         //user_table.setUser_account("k11kk");

@@ -1,29 +1,25 @@
 package com.jc17.select.dao;
+import javax.validation.constraints.Null;
 import  java.sql.Connection;
 import java.sql.DriverManager;
 
 public class GetConn {
-    private String username;
-    private String password;
-    private String database;
     private final String url="jdbc:sqlserver://60.205.220.17:1433";
+    private static Connection conn = null;
 
-    public GetConn(String username,String password,String database)
-    {
-        this.username=username;
-        this.password=password;
-        this.database=database;
+    public GetConn() {
     }
 
-    public Connection GetConnection()
-    {
-        String url = this.url +";"+"databaseName="+this.database+";"+"user="+this.username+";"+"password="+this.password;
-        Connection conn = null;
-        try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection(url);
-        }catch(Exception e){
-            e.printStackTrace();
+    public Connection GetConnection() {
+        String url = this.url +";"+"databaseName=topic_select;user=jc17;password=jc172019";
+        conn = null;
+        if(conn==null){
+            try{
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                conn = DriverManager.getConnection(url);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         return conn;
     }

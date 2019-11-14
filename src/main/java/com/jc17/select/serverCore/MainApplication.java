@@ -1,8 +1,8 @@
 package com.jc17.select.serverCore;
 
-import com.jc17.select.serverCore.resources.UseItem.UserItemResource;
+import com.jc17.select.serverCore.resources.userItem.UserItemResource;
 import com.jc17.select.serverCore.resources.test.TestResource;
-import com.jc17.select.serverCore.resources.user_login.UserLoginResource;
+import com.jc17.select.serverCore.resources.userLogin.UserLoginResource;
 import com.jc17.select.serverCore.userAuth.SysUser;
 import com.jc17.select.serverCore.userAuth.UserAuthenticator;
 import com.jc17.select.serverCore.userAuth.UserAuthorizer;

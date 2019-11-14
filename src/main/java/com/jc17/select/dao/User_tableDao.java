@@ -9,14 +9,12 @@ import java.util.List;
 public class User_tableDao {
 
     private static Connection conn=null;
-    public User_tableDao(Connection conn)
-    {
-        this.conn=conn;
+    public User_tableDao() {
+        this.conn = new GetConn().GetConnection();
     }
 
     private static final String INSERT_USERTABLE_SQL="INSERT INTO USER_TABLE VALUES(?,?,?,?)";
-    public void insert_UserTable(User_table user_table)
-    {
+    public void insert_UserTable(User_table user_table) {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_USERTABLE_SQL);
@@ -56,6 +54,7 @@ public class User_tableDao {
             pstm = conn.prepareStatement(DELETE_USERTABLE_SQL);
             pstm.setString(1,user_id);
             pstm.executeUpdate();
+
             pstm.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -71,7 +70,7 @@ public class User_tableDao {
         try{
             pstm = conn.prepareStatement(GET_BY_ID_USERTABLE_SQL);
             pstm.setString(1,user_id);
-            rs = pstm.executeQuery(GET_BY_ID_USERTABLE_SQL);
+            rs = pstm.executeQuery();
             if(rs.next()) {
                 user_table.setUser_id(rs.getString("USER_ID"));
                 user_table.setUser_account(rs.getString("USER_ACCOUNT"));
@@ -86,23 +85,24 @@ public class User_tableDao {
         return user_table;
     }
 
-    private static final String GET_USERTABLE_SQL="SELECT USER_ID,USER_ACCOUNT=?,PASSWORD=?,RIGHTS=? FROM USER_TABLE";
+    private static final String GET_USERTABLE_SQL="SELECT USER_ID,USER_ACCOUNT,PASSWORD,RIGHTS FROM USER_TABLE";
     public List<User_table> get_User_Table(String sql)
     {
         List<User_table> user_tables = new ArrayList<User_table>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try{
-            pstm = conn.prepareStatement(GET_USERTABLE_SQL);
-            rs = pstm.executeQuery(GET_USERTABLE_SQL);
+//            pstm = conn.prepareStatement(GET_USERTABLE_SQL);
+//            rs = pstm.executeQuery(GET_USERTABLE_SQL);
             String finalsql = null;
             if(sql.equals("")){
                 finalsql = GET_USERTABLE_SQL;
             }
             else{
-                finalsql = GET_USERTABLE_SQL + "WHERE" + sql;
+                finalsql = GET_USERTABLE_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 User_table user_table = new User_table();
                 user_table.setUser_id(rs.getString("USER_ID"));
