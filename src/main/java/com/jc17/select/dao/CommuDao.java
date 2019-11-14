@@ -38,12 +38,12 @@ public class CommuDao {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(UPDATE_COMMU_SQL);
-            pstm.setString(5,commu.getCommu_id());
+            pstm.setString(6,commu.getCommu_id());
             pstm.setDate(1,commu.getComtime());
             pstm.setString(2,commu.getSender_id());
             pstm.setString(3,commu.getReceiver_id());
             pstm.setString(4,commu.getContent());
-            pstm.setInt(6,commu.getReaded());
+            pstm.setInt(5,commu.getReaded());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){

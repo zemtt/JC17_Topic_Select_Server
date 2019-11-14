@@ -61,7 +61,7 @@ public class User_tableDao {
         }
     }
 
-    private static final String GET_BY_ID_USERTABLE_SQL="SELECT USER_ID,USER_ACCOUNT=?,PASSWORD=?,RIGHTS=? FROM USER_TABLE WHERE USER_ID=?";
+    private static final String GET_BY_ID_USERTABLE_SQL="SELECT USER_ID,USER_ACCOUNT,PASSWORD,RIGHTS FROM USER_TABLE WHERE USER_ID=?";
     public User_table get_User_Table_By_Id(String user_id)
     {
         User_table user_table = new User_table();
