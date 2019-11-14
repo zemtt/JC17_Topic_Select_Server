@@ -1,5 +1,6 @@
 package com.jc17.select.serverCore;
 
+import com.jc17.select.serverCore.resources.UserList.UserListResource;
 import com.jc17.select.serverCore.resources.userInfo.UserInfoResource;
 import com.jc17.select.serverCore.resources.userItem.UserItemResource;
 import com.jc17.select.serverCore.resources.userLogin.UserLoginResource;
@@ -49,7 +50,8 @@ public class MainApplication extends Application<AppConfigure> {
 
 
         // User资源
-        environment.jersey().register(new UserItemResource());
+//        environment.jersey().register(new UserItemResource());
+        environment.jersey().register(new UserListResource());
         environment.jersey().register(new UserInfoResource());
         environment.jersey().register(new UserLoginResource());
 
