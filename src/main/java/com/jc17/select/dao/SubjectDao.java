@@ -2,12 +2,15 @@ package com.jc17.select.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubjectDao {
     private static Connection conn=null;
-    public SubjectDao(Connection conn)
+    public SubjectDao()
     {
-        this.conn=conn;
+        this.conn = new GetConn().GetConnection();
     }
 
     private static final String INSERT_SUBJECT_SQL="INSERT INTO SUBJECT VALUES(?,?.?,?,?,?,?,?)";
@@ -65,4 +68,67 @@ public class SubjectDao {
             e.printStackTrace();
         }
     }
+
+    private static final String GET_BY_ID_SUBJECT_SQL="SELECT SUB_ID,T_ID,SUB_INFO,SUB_REQUIREMENTS, ASSESSMENT,STUMAX,STUSELE FROM SUBJECT WHERE SUB_ID=?";
+    public Subject get_Subject_By_Id(String sub_id)
+    {
+        Subject subject= new Subject();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try{
+            pstm = conn.prepareStatement(GET_BY_ID_SUBJECT_SQL);
+            pstm.setString(1,sub_id);
+            rs = pstm.executeQuery();
+            if(rs.next()) {
+                subject.setSub_id(rs.getString(1));
+                subject.setT_id(rs.getString(2));
+                subject.setSub_info(rs.getString(3));
+                subject.setSub_requirements(rs.getString(4));
+                subject.setAssessment(rs.getString(5));
+                subject.setStumax(rs.getInt(6));
+                subject.setStusele(rs.getInt(7));
+            }
+            rs.close();
+            pstm.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return subject;
+    }
+
+    private static final String GET_SUBJECT_SQL="SELECT SUB_ID,T_ID,SUB_INFO,SUB_REQUIREMENTS, ASSESSMENT,STUMAX,STUSELE FROM SUBJECT";
+    public List<Subject> get_Subject(String sql)
+    {
+        List<Subject> subjects = new ArrayList<Subject>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try{
+            String finalsql = null;
+            if(sql.equals("")){
+                finalsql = GET_SUBJECT_SQL;
+            }
+            else{
+                finalsql = GET_SUBJECT_SQL + " WHERE " + sql;
+            }
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
+            while(rs.next()) {
+                Subject subject = new Subject();
+                subject.setSub_id(rs.getString(1));
+                subject.setT_id(rs.getString(2));
+                subject.setSub_info(rs.getString(3));
+                subject.setSub_requirements(rs.getString(4));
+                subject.setAssessment(rs.getString(5));
+                subject.setStumax(rs.getInt(6));
+                subject.setStusele(rs.getInt(7));
+                subjects.add(subject);
+            }
+            rs.close();
+            pstm.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return subjects;
+    }
+
 }

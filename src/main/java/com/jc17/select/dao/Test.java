@@ -42,5 +42,19 @@ public class Test {
 
         //user_table.setUser_account("k11kk");
         //user_tableDao.update_UserTable(user_table);
+
+        Student student=new Student();
+        student.setSno("99999");
+        student.setSn("刘子向");
+        student.setS_id("09");
+        student.setSex("男");
+        student.setBirth(new Date(1999,7,7));
+        student.setMajor_id("1111");
+        student.setUser_id("00000");
+
+        StudentDao studentDao=new StudentDao();
+        studentDao.insertStudent(student);
+        student=studentDao.get_Student_By_Id("09");
+        System.out.println(student.getSn());
     }
 }

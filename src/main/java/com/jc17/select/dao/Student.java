@@ -9,7 +9,7 @@ public class Student {
     private String sex;
     private Date birth;
     private String major_id;
-    private String select_question;
+    private String user_id;
 
 
     public String getS_id() {
@@ -60,11 +60,12 @@ public class Student {
         this.major_id = major_id;
     }
 
-    public String getSelect_question() {
-        return select_question;
+
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setSelect_question(String select_question) {
-        this.select_question = select_question;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 }
