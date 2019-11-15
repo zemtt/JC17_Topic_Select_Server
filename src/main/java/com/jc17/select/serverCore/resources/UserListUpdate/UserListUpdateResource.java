@@ -38,7 +38,7 @@ public class UserListUpdateResource {
 //            List<User_table> users = new User_tableDao().get_User_Table("");
             users.setUser_account(account.get().toString());
             users.setPassword(passworld.get().toString());
-            users.setRights((int) usertype.get());
+            users.setRights(Integer.parseInt(usertype.get().toString()));
             new User_tableDao().update_UserTable(users);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("state", 1);

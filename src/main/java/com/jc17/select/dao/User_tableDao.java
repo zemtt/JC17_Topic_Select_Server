@@ -33,7 +33,7 @@ public class User_tableDao {
 
     private static final String UPDATE_USERTABLE_SQL = "UPDATE USER_TABLE SET USER_ACCOUNT=?,PASSWORD=?,RIGHTS=? WHERE USER_ID=?";
 
-    public User_tableDao update_UserTable(User_table user_table) {
+    public void update_UserTable(User_table user_table) {
         PreparedStatement pstm = null;
         try {
             pstm = conn.prepareStatement(UPDATE_USERTABLE_SQL);
@@ -46,7 +46,6 @@ public class User_tableDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
 
     private static final String DELETE_USERTABLE_SQL = "DELETE FROM USER_TABLE WHERE USER_ID=?";
