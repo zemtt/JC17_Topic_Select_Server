@@ -1,8 +1,8 @@
 package com.jc17.select.serverCore;
 
 import com.jc17.select.serverCore.resources.UserList.UserListResource;
+import com.jc17.select.serverCore.resources.UserListUpdate.UserListUpdateResource;
 import com.jc17.select.serverCore.resources.userInfo.UserInfoResource;
-import com.jc17.select.serverCore.resources.userItem.UserItemResource;
 import com.jc17.select.serverCore.resources.userLogin.UserLoginResource;
 import com.jc17.select.serverCore.userAuth.SysUser;
 import com.jc17.select.serverCore.userAuth.UserAuthenticator;
@@ -10,7 +10,6 @@ import com.jc17.select.serverCore.userAuth.UserAuthorizer;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
-import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.auth.oauth.OAuthCredentialAuthFilter;
 import io.dropwizard.setup.Bootstrap;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -54,6 +53,6 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserListResource());
         environment.jersey().register(new UserInfoResource());
         environment.jersey().register(new UserLoginResource());
-
+        environment.jersey().register(new UserListUpdateResource());
     }
 }
