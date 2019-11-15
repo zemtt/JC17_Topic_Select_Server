@@ -1,4 +1,4 @@
-package com.jc17.select.serverCore.resources.UserListUpdate;
+package com.jc17.select.serverCore.resources.UserListDelete;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,17 +15,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @Path("/api/admin/userList")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserListUpdateResource {
-    public UserListUpdateResource() {
+public class UserListDeleteResource {
+    public UserListDeleteResource() {
     }
 
-    @PUT
-    public ReturnObject getTest(@QueryParam("userid") Optional userid,@QueryParam("account") Optional account,
-                                @QueryParam("passworld") Optional passworld,
-                                @QueryParam("usertype") Optional usertype, @Auth SysUser user) {
-//                    @QueryParam("usertype") Optional usertype) {
+    @DELETE
+    public ReturnObject getTest(@QueryParam("userid") Optional userid, @Auth SysUser user) {
         ReturnObject returnObj = new ReturnObject();
         if (!user.isAdmin()) {
             returnObj.setError_code(1);
@@ -34,12 +32,7 @@ public class UserListUpdateResource {
         }
         try {
             List<Object> result = new ArrayList<>();
-            User_table users = new User_tableDao().get_User_Table_By_Id(userid.get().toString());
-//            List<User_table> users = new User_tableDao().get_User_Table("");
-            users.setUser_account(account.get().toString());
-            users.setPassword(passworld.get().toString());
-            users.setRights(Integer.parseInt(usertype.get().toString()));
-            new User_tableDao().update_UserTable(users);
+            new User_tableDao().delete_UserTable(userid.get().toString());
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("state", 1);
             result.add(map);
