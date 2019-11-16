@@ -35,7 +35,6 @@ public class UserAddResource {
             List<Object> result = new ArrayList<>();
             User_table users = new User_table();
 //            List<User_table> users = new User_tableDao().get_User_Table("");
-            users.setUser_id("171002555");                                      //在没写随机生成ID的时候测试用的，随机生成完ID后去掉
             users.setUser_account(account.get().toString());
             users.setPassword(passworld.get().toString());
             users.setRights(Integer.parseInt(usertype.get().toString()));
