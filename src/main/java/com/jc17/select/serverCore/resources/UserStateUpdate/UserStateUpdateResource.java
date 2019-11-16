@@ -1,4 +1,4 @@
-package com.jc17.select.serverCore.resources.UserListUpdate;
+package com.jc17.select.serverCore.resources.UserStateUpdate;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Path("/api/admin/userList")
+@Path("/api/sys/config")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserListUpdateResource {
-    public UserListUpdateResource() {
+public class UserStateUpdateResource {
+    public UserStateUpdateResource() {
     }
 
     @PUT
