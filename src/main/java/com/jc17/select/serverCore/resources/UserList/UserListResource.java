@@ -22,7 +22,8 @@ public class UserListResource {
     }
 
     @GET
-    public ReturnObject getTest(@QueryParam("num") Optional num, @QueryParam("skip") Optional skip, @Auth SysUser user) {
+    public ReturnObject getTest(@QueryParam("num") Optional num,
+                                @QueryParam("skip") Optional skip, @Auth SysUser user) {
         ReturnObject returnObj = new ReturnObject();
         if (!user.isAdmin()) {
             returnObj.setError_code(1);
