@@ -1,47 +1,46 @@
-package com.jc17.select.dao;
+package com.jc17.select.instances;
 
 import java.sql.Date;
 
-public class Student {
-    private String s_id;
-    private String sno;
-    private String sn;
-    private String sex;
+public class Teacher {
+    private String t_id;
+    private String tno;
+    private String tn;
+    private String tsex;
     private Date birth;
     private String major_id;
     private String user_id;
 
-
-    public String getS_id() {
-        return s_id;
+    public String getT_id() {
+        return t_id;
     }
 
-    public void setS_id(String s_id) {
-        this.s_id = s_id;
+    public void setT_id(String t_id) {
+        this.t_id = t_id;
     }
 
-    public String getSno() {
-        return sno;
+    public String getTno() {
+        return tno;
     }
 
-    public void setSno(String sno) {
-        this.sno = sno;
+    public void setTno(String tno) {
+        this.tno = tno;
     }
 
-    public String getSn() {
-        return sn;
+    public String getTn() {
+        return tn;
     }
 
-    public void setSn(String sn) {
-        this.sn = sn;
+    public void setTn(String tn) {
+        this.tn = tn;
     }
 
     public String getSex() {
-        return sex;
+        return tsex;
     }
 
     public void setSex(String sex) {
-        this.sex = sex;
+        this.tsex = sex;
     }
 
     public Date getBirth() {
@@ -59,7 +58,6 @@ public class Student {
     public void setMajor_id(String major_id) {
         this.major_id = major_id;
     }
-
 
     public String getUser_id() {
         return user_id;

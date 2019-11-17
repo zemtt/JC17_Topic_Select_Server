@@ -1,4 +1,4 @@
-package com.jc17.select.dao;
+package com.jc17.select.instances;
 
 public class Submaj {
     private String submaj_id;

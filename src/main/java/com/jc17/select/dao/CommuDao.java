@@ -1,6 +1,7 @@
 package com.jc17.select.dao;
 
-import javax.xml.transform.Result;
+import com.jc17.select.instances.Commu;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

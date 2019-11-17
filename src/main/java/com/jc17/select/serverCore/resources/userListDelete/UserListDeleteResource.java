@@ -1,10 +1,9 @@
-package com.jc17.select.serverCore.resources.UserAdd;
+package com.jc17.select.serverCore.resources.userListDelete;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.base.Optional;
-import com.jc17.select.dao.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
 import com.jc17.select.serverCore.userAuth.SysUser;
@@ -15,16 +14,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @Path("/api/admin/userList")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserAddResource {
-    public UserAddResource() {
+public class UserListDeleteResource {
+    public UserListDeleteResource() {
     }
 
-    @POST
-    public ReturnObject getTest( @QueryParam("account") Optional account, @QueryParam("passworld") Optional passworld,
-                                @QueryParam("usertype") Optional usertype, @Auth SysUser user) {
-//                    @QueryParam("usertype") Optional usertype) {
+    @DELETE
+    public ReturnObject getTest(@QueryParam("userid") Optional userid, @Auth SysUser user) {
         ReturnObject returnObj = new ReturnObject();
         if (!user.isAdmin()) {
             returnObj.setError_code(1);
@@ -33,12 +31,7 @@ public class UserAddResource {
         }
         try {
             List<Object> result = new ArrayList<>();
-            User_table users = new User_table();
-//            List<User_table> users = new User_tableDao().get_User_Table("");
-            users.setUser_account(account.get().toString());
-            users.setPassword(passworld.get().toString());
-            users.setRights(Integer.parseInt(usertype.get().toString()));
-            new User_tableDao().insert_UserTable(users);
+            new User_tableDao().delete_UserTable(userid.get().toString());
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("state", 1);
             result.add(map);

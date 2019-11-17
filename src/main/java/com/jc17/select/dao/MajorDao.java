@@ -1,6 +1,8 @@
 package com.jc17.select.dao;
 
-import javax.ws.rs.DELETE;
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Major;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
