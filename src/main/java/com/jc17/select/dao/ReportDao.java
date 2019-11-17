@@ -108,7 +108,9 @@ public class ReportDao {
             else{
                 finalsql= GET_REPORT_SQL+ " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Report report = new Report();
                 report.setReport_id(rs.getString("REPORT_ID"));

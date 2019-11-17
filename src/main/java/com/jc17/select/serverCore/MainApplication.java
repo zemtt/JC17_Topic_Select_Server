@@ -1,5 +1,7 @@
 package com.jc17.select.serverCore;
 
+import com.jc17.select.serverCore.resources.Studentsubjectscore.StudentsubjectscoreResource;
+import com.jc17.select.serverCore.resources.SubjectList.SubjectListResource;
 import com.jc17.select.serverCore.resources.UserAdd.UserAddResource;
 import com.jc17.select.serverCore.resources.UserList.UserListResource;
 import com.jc17.select.serverCore.resources.UserListDelete.UserListDeleteResource;
@@ -58,5 +60,7 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserListUpdateResource());
         environment.jersey().register(new UserListDeleteResource());
         environment.jersey().register(new UserAddResource());
+        environment.jersey().register(new SubjectListResource());
+        environment.jersey().register(new StudentsubjectscoreResource());
     }
 }

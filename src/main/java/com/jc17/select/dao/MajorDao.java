@@ -94,7 +94,9 @@ public class MajorDao {
             else{
                 finalsql=GET_Major_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Major major = new Major();
                 major.setMajor_id(rs.getString("MAJOR_ID"));

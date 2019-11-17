@@ -102,7 +102,9 @@ public class Operation_logDao {
             else{
                 finalsql= GET_OPERATIONLOG_SQL+ " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Operation_log operation_log = new Operation_log();
                 operation_log.setOplog_id(rs.getString("OPLOG_ID"));

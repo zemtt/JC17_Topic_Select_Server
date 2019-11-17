@@ -114,10 +114,10 @@ public class StudentDao {
                 student.setS_id(rs.getString(1));
                 student.setSno(rs.getString(2));
                 student.setSn(rs.getString(3));
-                student.setSex(rs.getString(5));
-                student.setBirth(rs.getDate(6));
-                student.setMajor_id(rs.getString(7));
-                student.setUser_id(rs.getString(8));
+                student.setSex(rs.getString(4));
+                student.setBirth(rs.getDate(5));
+                student.setMajor_id(rs.getString(6));
+                student.setUser_id(rs.getString(7));
                 Students.add(student);
             }
             rs.close();

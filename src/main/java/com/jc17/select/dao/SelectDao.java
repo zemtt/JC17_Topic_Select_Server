@@ -99,7 +99,9 @@ public class SelectDao {
             else{
                 finalsql= GET_SELECT_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Select select = new Select();
                 select.setSelect_id(rs.getString("SELECT_ID"));

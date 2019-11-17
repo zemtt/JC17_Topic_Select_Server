@@ -105,7 +105,9 @@ public class CommuDao {
             else{
                 finalsql=GET_COMMU_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Commu commu = new Commu();
                 commu.setCommu_id(rs.getString("COMMU_ID"));
