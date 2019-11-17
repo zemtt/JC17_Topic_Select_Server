@@ -1,10 +1,10 @@
-package com.jc17.select.serverCore.resources.UserStateUpdate;
+package com.jc17.select.serverCore.resources.userListUpdate;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.base.Optional;
-import com.jc17.select.dao.User_table;
+import com.jc17.select.instances.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
 import com.jc17.select.serverCore.userAuth.SysUser;
@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Path("/api/sys/config")
+@Path("/api/admin/userList")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserStateUpdateResource {
-    public UserStateUpdateResource() {
+public class UserListUpdateResource {
+    public UserListUpdateResource() {
     }
 
     @PUT

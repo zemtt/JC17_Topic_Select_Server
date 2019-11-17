@@ -1,5 +1,8 @@
 package com.jc17.select.dao;
 
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Teacher;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,10 +1,10 @@
-package com.jc17.select.serverCore.resources.UserList;
+package com.jc17.select.serverCore.resources.userAdd;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.base.Optional;
-import com.jc17.select.dao.User_table;
+import com.jc17.select.instances.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
 import com.jc17.select.serverCore.userAuth.SysUser;
@@ -17,13 +17,14 @@ import java.util.Map;
 
 @Path("/api/admin/userList")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserListResource {
-    public UserListResource() {
+public class UserAddResource {
+    public UserAddResource() {
     }
 
-    @GET
-    public ReturnObject getTest(@QueryParam("num") Optional num,
-                                @QueryParam("skip") Optional skip, @Auth SysUser user) {
+    @POST
+    public ReturnObject getTest( @QueryParam("account") Optional account, @QueryParam("passworld") Optional passworld,
+                                @QueryParam("usertype") Optional usertype, @Auth SysUser user) {
+//                    @QueryParam("usertype") Optional usertype) {
         ReturnObject returnObj = new ReturnObject();
         if (!user.isAdmin()) {
             returnObj.setError_code(1);
@@ -32,16 +33,15 @@ public class UserListResource {
         }
         try {
             List<Object> result = new ArrayList<>();
-            List<User_table> users = new User_tableDao().get_User_Table_Row(num.get().toString(), skip.get().toString());
+            User_table users = new User_table();
 //            List<User_table> users = new User_tableDao().get_User_Table("");
-            for (User_table a : users) {
-                Map<String, Object> t = new HashMap<>();
-                t.put("userid", a.getUser_id());
-                t.put("username", a.getUser_account());
-                t.put("passworld", a.getPassword());
-                t.put("usertype", a.getRights() == 0 ? "admin" : (a.getRights() == 1 ? "teacher" : "student"));
-                result.add(t);
-            }
+            users.setUser_account(account.get().toString());
+            users.setPassword(passworld.get().toString());
+            users.setRights(Integer.parseInt(usertype.get().toString()));
+            new User_tableDao().insert_UserTable(users);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("state", 1);
+            result.add(map);
             returnObj.setError_code(0);
             returnObj.setData(result);
         } catch (Exception e) {

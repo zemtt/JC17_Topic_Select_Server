@@ -1,5 +1,8 @@
 package com.jc17.select.dao;
 
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Student;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
