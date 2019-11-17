@@ -13,16 +13,16 @@ public class SelectDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_SELECT_SQL="INSERT INTO SELECT VALUES(?,?,?,?)";
+    private static final String INSERT_SELECT_SQL="INSERT INTO SELECT VALUES(replace(NEWID(),'-',''),?,?,?)";
     public void insert_Select(Select select)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_SELECT_SQL);
-            pstm.setString(1,select.getSelect_id());
-            pstm.setString(2,select.getS_id());
-            pstm.setString(3,select.getSub_id());
-            pstm.setInt(4,select.getSelected());
+            //pstm.setString(1,select.getSelect_id());
+            pstm.setString(1,select.getS_id());
+            pstm.setString(2,select.getSub_id());
+            pstm.setInt(3,select.getSelected());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){

@@ -13,19 +13,19 @@ public class ReportDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_REPORT_SQL="INSERT INTO REPORT VALUES(?,?,?,?,?,?,?)";
+    private static final String INSERT_REPORT_SQL="INSERT INTO REPORT VALUES(replace(NEWID(),'-',''),?,?,?,?,?,?)";
     public void insert_Report(Report report)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_REPORT_SQL);
-            pstm.setString(1,report.getReport_id());
-            pstm.setString(2,report.getS_id());
-            pstm.setString(3,report.getSub_id());
-            pstm.setString(4,report.getRepattribute());
-            pstm.setFloat(5, report.getScore());
-            pstm.setInt(6,report.getMarked());
-            pstm.setString(7,report.getContent());
+            //pstm.setString(1,report.getReport_id());
+            pstm.setString(1,report.getS_id());
+            pstm.setString(2,report.getSub_id());
+            pstm.setString(3,report.getRepattribute());
+            pstm.setFloat(4, report.getScore());
+            pstm.setInt(5,report.getMarked());
+            pstm.setString(6,report.getContent());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){

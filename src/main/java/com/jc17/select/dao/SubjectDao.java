@@ -13,20 +13,20 @@ public class SubjectDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_SUBJECT_SQL="INSERT INTO SUBJECT VALUES(?,?.?,?,?,?,?,?)";
+    private static final String INSERT_SUBJECT_SQL="INSERT INTO SUBJECT VALUES(replace(NEWID(),'-',''),?,?,?,?,?,?,?)";
     public void insert_Subject(Subject subject)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_SUBJECT_SQL);
-            pstm.setString(1,subject.getSub_id());
-            pstm.setString(2,subject.getSubno());
-            pstm.setString(3,subject.getT_id());
-            pstm.setString(4,subject.getSub_info());
-            pstm.setString(5,subject.getSub_requirements());
-            pstm.setString(6,subject.getAssessment());
-            pstm.setInt(7,subject.getStumax());
-            pstm.setInt(8,subject.getStusele());
+           // pstm.setString(1,subject.getSub_id());
+            pstm.setString(1,subject.getSubno());
+            pstm.setString(2,subject.getT_id());
+            pstm.setString(3,subject.getSub_info());
+            pstm.setString(4,subject.getSub_requirements());
+            pstm.setString(5,subject.getAssessment());
+            pstm.setInt(6,subject.getStumax());
+            pstm.setInt(7,subject.getStusele());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){

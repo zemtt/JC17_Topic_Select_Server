@@ -13,18 +13,18 @@ public class CommuDao {
     {
         this.conn=conn;
     }
-    private static final String INSERT_COMMU_SQL="INSERT INTO COMMU VALUES(?,?,?,?,?,?)";
+    private static final String INSERT_COMMU_SQL="INSERT INTO COMMU VALUES(replace(NEWID(),'-',''),?,?,?,?,?)";
     public void insert_Commu(Commu commu)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_COMMU_SQL);
-            pstm.setString(1,commu.getCommu_id());
-            pstm.setDate(2,commu.getComtime());
-            pstm.setString(3,commu.getSender_id());
-            pstm.setString(4,commu.getReceiver_id());
-            pstm.setString(5,commu.getContent());
-            pstm.setInt(6,commu.getReaded());
+            //pstm.setString(1,commu.getCommu_id());
+            pstm.setDate(1,commu.getComtime());
+            pstm.setString(2,commu.getSender_id());
+            pstm.setString(3,commu.getReceiver_id());
+            pstm.setString(4,commu.getContent());
+            pstm.setInt(5,commu.getReaded());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){

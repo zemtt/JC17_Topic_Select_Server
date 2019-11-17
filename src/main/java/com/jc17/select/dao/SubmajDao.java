@@ -14,15 +14,15 @@ public class SubmajDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_SUBMAJ_SQL="INSERT INTO SUBMAJ VALUES(?,?,?)";
+    private static final String INSERT_SUBMAJ_SQL="INSERT INTO SUBMAJ VALUES(replace(NEWID(),'-',''),?,?)";
     public void insert_Submaj(Submaj submaj)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_SUBMAJ_SQL);
-            pstm.setString(1,submaj.getSubmaj_id());
-            pstm.setString(2,submaj.getSub_id());
-            pstm.setString(3,submaj.getMajor_id());
+            //pstm.setString(1,submaj.getSubmaj_id());
+            pstm.setString(1,submaj.getSub_id());
+            pstm.setString(2,submaj.getMajor_id());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){

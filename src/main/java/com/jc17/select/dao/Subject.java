@@ -2,7 +2,7 @@ package com.jc17.select.dao;
 
 public class Subject {
     private String sub_id;
-    private String subno;
+    private String subno;//课程名
     private String t_id;
     private String sub_info;
     private String sub_requirements;

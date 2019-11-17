@@ -13,17 +13,17 @@ public class Operation_logDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_OPERATIONLOG_SQL="INSERT INTO OPERATION_LOG VALUES(?,?.?,?,?)";
+    private static final String INSERT_OPERATIONLOG_SQL="INSERT INTO OPERATION_LOG VALUES(replace(NEWID(),'-',''),?.?,?,?)";
     public void insert_OperationLog(Operation_log operation_log)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_OPERATIONLOG_SQL);
-            pstm.setString(1,operation_log.getOplog_id());
-            pstm.setString(2,operation_log.getUser_id());
-            pstm.setDate(3,operation_log.getOptime());
-            pstm.setString(4,operation_log.getOptype());
-            pstm.setString(5,operation_log.getOpstate());
+            //pstm.setString(1,operation_log.getOplog_id());
+            pstm.setString(1,operation_log.getUser_id());
+            pstm.setDate(2,operation_log.getOptime());
+            pstm.setString(3,operation_log.getOptype());
+            pstm.setString(4,operation_log.getOpstate());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){
