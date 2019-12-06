@@ -1,5 +1,13 @@
 package com.jc17.select.serverCore;
 
+import com.jc17.select.serverCore.resources.StudentGetSubID.StudentGetSubIDResource;
+import com.jc17.select.serverCore.resources.StudentGetselectrecord.StudentGetselectrecord;
+import com.jc17.select.serverCore.resources.StudentGetsubjectList.StudentGetsubjectList;
+import com.jc17.select.serverCore.resources.Studentcreateselectsubject.Studentcreateselectsubject;
+import com.jc17.select.serverCore.resources.Studentdeleteallrecord.Studentdeleteallrecord;
+import com.jc17.select.serverCore.resources.Studentdeletesimplerecord.Studentdeletesimplerecord;
+import com.jc17.select.serverCore.resources.Studenteditorpriority.Studenteditorpriority;
+import com.jc17.select.serverCore.resources.Studentsubjectlist.Studentsubjectlist;
 import com.jc17.select.serverCore.resources.studentSubjectscore.StudentsubjectscoreResource;
 import com.jc17.select.serverCore.resources.subjectList.SubjectListResource;
 import com.jc17.select.serverCore.resources.userAdd.UserAddResource;
@@ -60,7 +68,30 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserListUpdateResource());
         environment.jersey().register(new UserListDeleteResource());
         environment.jersey().register(new UserAddResource());
+
+
         environment.jersey().register(new SubjectListResource());
         environment.jersey().register(new StudentsubjectscoreResource());
+        environment.jersey().register(new StudentGetSubIDResource());
+        environment.jersey().register(new StudentGetsubjectList());
+        environment.jersey().register(new Studentsubjectlist());//学生志愿列表
+        environment.jersey().register(new StudentGetselectrecord());
+        environment.jersey().register(new Studentcreateselectsubject());
+        environment.jersey().register(new Studenteditorpriority());
+        environment.jersey().register(new Studentdeletesimplerecord());
+        environment.jersey().register(new Studentdeleteallrecord());
+
+
+
+
+
+
+
+
     }
 }
+
+
+
+
+
