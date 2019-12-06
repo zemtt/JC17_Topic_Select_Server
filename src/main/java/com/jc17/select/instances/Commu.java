@@ -9,6 +9,7 @@ public class Commu {
     private String receiver_id;
     private String content;
     private int readed;
+    private String commu_title;
 
     public String getCommu_id() {
         return commu_id;
@@ -53,4 +54,12 @@ public class Commu {
     public int getReaded() { return readed; }
 
     public void setReaded(int readed) { this.readed = readed; }
+
+    public String getCommu_title() {
+        return commu_title;
+    }
+
+    public void setCommu_title(String commu_title) {
+        this.commu_title = commu_title;
+    }
 }

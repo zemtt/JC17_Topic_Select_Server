@@ -1,5 +1,14 @@
 package com.jc17.select.serverCore;
 
+import com.jc17.select.serverCore.resources.Subject.SubjectSource;
+import com.jc17.select.serverCore.resources.getMajors.getMajorsResource;
+import com.jc17.select.serverCore.resources.msg.msgResource;
+import com.jc17.select.serverCore.resources.msgList.msgListResource;
+import com.jc17.select.serverCore.resources.msgReceiverList.msgRecieverListResource;
+import com.jc17.select.serverCore.resources.report.reportResource;
+import com.jc17.select.serverCore.resources.reportList.reportListResource;
+import com.jc17.select.serverCore.resources.ssublog.ssublogResource;
+import com.jc17.select.serverCore.resources.studentList.studentListResource;
 import com.jc17.select.serverCore.resources.studentSubjectscore.StudentsubjectscoreResource;
 import com.jc17.select.serverCore.resources.subjectList.SubjectListResource;
 import com.jc17.select.serverCore.resources.userAdd.UserAddResource;
@@ -62,5 +71,14 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserAddResource());
         environment.jersey().register(new SubjectListResource());
         environment.jersey().register(new StudentsubjectscoreResource());
+        environment.jersey().register(new SubjectSource());
+        environment.jersey().register(new getMajorsResource());
+        environment.jersey().register(new studentListResource());
+        environment.jersey().register(new reportListResource());
+        environment.jersey().register(new reportResource());
+        environment.jersey().register(new ssublogResource());
+        environment.jersey().register(new msgListResource());
+        environment.jersey().register(new msgResource());
+        environment.jersey().register(new msgRecieverListResource());
     }
 }

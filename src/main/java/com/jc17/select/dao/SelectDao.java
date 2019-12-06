@@ -16,7 +16,7 @@ public class SelectDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_SELECT_SQL="INSERT INTO SELECT VALUES(replace(NEWID(),'-',''),?,?,?)";
+    private static final String INSERT_SELECT_SQL="INSERT INTO SELECT_ VALUES(replace(NEWID(),'-',''),?,?,?)";
     public void insert_Select(Select select)
     {
         PreparedStatement pstm = null;
@@ -33,7 +33,7 @@ public class SelectDao {
         }
     }
 
-    private static final String UPDATE_SELECT_SQL="UPDATE SELECT SET S_ID=?, SUB_ID=?,SELECTED=? WHERE SELECT_ID=?";
+    private static final String UPDATE_SELECT_SQL="UPDATE SELECT_ SET S_ID=?, SUB_ID=?,SELECTED=? WHERE SELECT_ID=?";
     public void update_Select(Select select)
     {
         PreparedStatement pstm = null;
@@ -50,7 +50,7 @@ public class SelectDao {
         }
     }
 
-    private static final String DELETE_SELECT_SQL="DELETE FROM SELECT WHERE SELECT_ID=?";
+    private static final String DELETE_SELECT_SQL="DELETE FROM SELECT_ WHERE SELECT_ID=?";
     public void delete_Select(String select_id)
     {
         PreparedStatement pstm = null;
@@ -64,7 +64,7 @@ public class SelectDao {
         }
     }
 
-    private static final String GET_BY_ID_SELECT_SQL="SELECT SELECT_ID,S_ID,SUB_ID,SELECTED FROM SELECT WHERE SELECT_ID=?";
+    private static final String GET_BY_ID_SELECT_SQL="SELECT SELECT_ID,S_ID,SUB_ID,SELECTED FROM SELECT_ WHERE SELECT_ID=?";
     public Select get_Select_By_Id(String select_id)
     {
         Select select = new Select();
@@ -88,7 +88,7 @@ public class SelectDao {
         return select;
     }
 
-    private static final String GET_SELECT_SQL="SELECT SELECT_ID,S_ID,SUB_ID,SELECTED FROM SELECT";
+    private static final String GET_SELECT_SQL="SELECT SELECT_ID,S_ID,SUB_ID,SELECTED FROM SELECT_";
     public List<Select> get_Select(String sql)
     {
         List<Select> selects = new ArrayList<Select>();

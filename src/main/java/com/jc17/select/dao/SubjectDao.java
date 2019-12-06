@@ -23,13 +23,13 @@ public class SubjectDao {
         try{
             pstm = conn.prepareStatement(INSERT_SUBJECT_SQL);
            // pstm.setString(1,subject.getSub_id());
-            pstm.setString(1,subject.getSubno());
-            pstm.setString(2,subject.getT_id());
-            pstm.setString(3,subject.getSub_info());
-            pstm.setString(4,subject.getSub_requirements());
-            pstm.setString(5,subject.getAssessment());
-            pstm.setInt(6,subject.getStumax());
-            pstm.setInt(7,subject.getStusele());
+            pstm.setString(1,subject.getT_id());
+            pstm.setString(2,subject.getSub_info());
+            pstm.setString(3,subject.getSub_requirements());
+            pstm.setString(4,subject.getAssessment());
+            pstm.setInt(5,subject.getStumax());
+            pstm.setInt(6,subject.getStusele());
+            pstm.setString(7,subject.getSubno());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){
@@ -37,7 +37,7 @@ public class SubjectDao {
         }
     }
 
-    private static final String UPDATE_SUBJECT_SQL="UPDATE SUBJECT SET SUBNO=?, T_ID=?, SUB_INFO=?, SUB_REQUIREMENTS=?, ASSESSMENT=?, STUMAX=?, STUSELE=? WHERE  SUB_ID=?";
+    private static final String UPDATE_SUBJECT_SQL="UPDATE SUBJECT SET SUBN=?, T_ID=?, SUB_INFO=?, SUB_REQUIREMENTS=?, ASSESSMENT=?, STUMAX=?, STUSELE=? WHERE  SUB_ID=?";
     public void update_Subject(Subject subject)
     {
         PreparedStatement pstm = null;
@@ -72,7 +72,7 @@ public class SubjectDao {
         }
     }
 
-    private static final String GET_BY_ID_SUBJECT_SQL="SELECT SUB_ID,T_ID,SUB_INFO,SUB_REQUIREMENTS, ASSESSMENT,STUMAX,STUSELE FROM SUBJECT WHERE SUB_ID=?";
+    private static final String GET_BY_ID_SUBJECT_SQL="SELECT SUB_ID,T_ID,SUB_INFO,SUB_REQUIREMENTS, ASSESSMENT,STUMAX,STUSELE,SUBN FROM SUBJECT WHERE SUB_ID=?";
     public Subject get_Subject_By_Id(String sub_id)
     {
         Subject subject= new Subject();
@@ -90,6 +90,7 @@ public class SubjectDao {
                 subject.setAssessment(rs.getString(5));
                 subject.setStumax(rs.getInt(6));
                 subject.setStusele(rs.getInt(7));
+                subject.setSubno(rs.getString(8));
             }
             rs.close();
             pstm.close();

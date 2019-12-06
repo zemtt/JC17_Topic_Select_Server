@@ -30,7 +30,7 @@ public class SubjectListResource {
         String userid = usertoken.getName();
         try{
             List<User_table> findResult = findUser(userid);
-            if(findResult.get(0).getRights()!=1)
+            if(findResult.get(0).getRights()==1)
             {
                 System.out.println("userid:"+userid);
                 List<Object> result = new ArrayList<>();
@@ -45,9 +45,9 @@ public class SubjectListResource {
                     List<Submaj> submajList = submajDao.get_Submaj("SUB_ID='"+i.getSub_id()+"'");
                     for(Submaj j:submajList){
                         MajorDao majorDao = new MajorDao();
-                        System.out.println("majorid:"+j.getMajor_id());
+                        //System.out.println("majorid:"+j.getMajor_id());
                         List<Major> majorList = majorDao.get_Major("MAJOR_ID='"+j.getMajor_id()+"'");//1条
-                        System.out.println("majorname:"+majorList.get(0).getMajor_name());
+                        //System.out.println("majorname:"+majorList.get(0).getMajor_name());
                         majors.append(majorList.get(0).getMajor_name()+" ");
                     }
                     Map<String,Object> t = new HashMap<>();
