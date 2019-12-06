@@ -1,5 +1,8 @@
 package com.jc17.select.dao;
 
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Select;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -99,7 +102,9 @@ public class SelectDao {
             else{
                 finalsql= GET_SELECT_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Select select = new Select();
                 select.setSelect_id(rs.getString("SELECT_ID"));

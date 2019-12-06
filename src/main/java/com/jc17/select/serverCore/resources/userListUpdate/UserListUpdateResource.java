@@ -1,10 +1,10 @@
-package com.jc17.select.serverCore.resources.UserListUpdate;
+package com.jc17.select.serverCore.resources.userListUpdate;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.base.Optional;
-import com.jc17.select.dao.User_table;
+import com.jc17.select.instances.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
 import com.jc17.select.serverCore.userAuth.SysUser;

@@ -1,6 +1,6 @@
 package com.jc17.select.serverCore.userAuth;
 
-import com.jc17.select.dao.User_table;
+import com.jc17.select.instances.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.Token;
 

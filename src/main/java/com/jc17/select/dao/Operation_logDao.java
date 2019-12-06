@@ -1,5 +1,8 @@
 package com.jc17.select.dao;
 
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Operation_log;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -102,7 +105,9 @@ public class Operation_logDao {
             else{
                 finalsql= GET_OPERATIONLOG_SQL+ " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Operation_log operation_log = new Operation_log();
                 operation_log.setOplog_id(rs.getString("OPLOG_ID"));

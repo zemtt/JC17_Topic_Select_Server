@@ -1,9 +1,11 @@
 package com.jc17.select.serverCore;
 
-import com.jc17.select.serverCore.resources.UserAdd.UserAddResource;
-import com.jc17.select.serverCore.resources.UserList.UserListResource;
-import com.jc17.select.serverCore.resources.UserListDelete.UserListDeleteResource;
-import com.jc17.select.serverCore.resources.UserListUpdate.UserListUpdateResource;
+import com.jc17.select.serverCore.resources.studentSubjectscore.StudentsubjectscoreResource;
+import com.jc17.select.serverCore.resources.subjectList.SubjectListResource;
+import com.jc17.select.serverCore.resources.userAdd.UserAddResource;
+import com.jc17.select.serverCore.resources.userList.UserListResource;
+import com.jc17.select.serverCore.resources.userListDelete.UserListDeleteResource;
+import com.jc17.select.serverCore.resources.userListUpdate.UserListUpdateResource;
 import com.jc17.select.serverCore.resources.userInfo.UserInfoResource;
 import com.jc17.select.serverCore.resources.userLogin.UserLoginResource;
 import com.jc17.select.serverCore.userAuth.SysUser;
@@ -58,5 +60,7 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserListUpdateResource());
         environment.jersey().register(new UserListDeleteResource());
         environment.jersey().register(new UserAddResource());
+        environment.jersey().register(new SubjectListResource());
+        environment.jersey().register(new StudentsubjectscoreResource());
     }
 }

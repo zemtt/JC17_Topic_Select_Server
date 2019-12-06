@@ -1,10 +1,10 @@
-package com.jc17.select.serverCore.resources.UserStateUpdate;
+package com.jc17.select.serverCore.resources.userAdd;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.base.Optional;
-import com.jc17.select.dao.User_table;
+import com.jc17.select.instances.User_table;
 import com.jc17.select.dao.User_tableDao;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
 import com.jc17.select.serverCore.userAuth.SysUser;
@@ -15,15 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Path("/api/sys/config")
+@Path("/api/admin/userList")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserStateUpdateResource {
-    public UserStateUpdateResource() {
+public class UserAddResource {
+    public UserAddResource() {
     }
 
-    @PUT
-    public ReturnObject getTest(@QueryParam("userid") Optional userid,@QueryParam("account") Optional account,
-                                @QueryParam("passworld") Optional passworld,
+    @POST
+    public ReturnObject getTest( @QueryParam("account") Optional account, @QueryParam("passworld") Optional passworld,
                                 @QueryParam("usertype") Optional usertype, @Auth SysUser user) {
 //                    @QueryParam("usertype") Optional usertype) {
         ReturnObject returnObj = new ReturnObject();
@@ -34,12 +33,12 @@ public class UserStateUpdateResource {
         }
         try {
             List<Object> result = new ArrayList<>();
-            User_table users = new User_tableDao().get_User_Table_By_Id(userid.get().toString());
+            User_table users = new User_table();
 //            List<User_table> users = new User_tableDao().get_User_Table("");
             users.setUser_account(account.get().toString());
             users.setPassword(passworld.get().toString());
             users.setRights(Integer.parseInt(usertype.get().toString()));
-            new User_tableDao().update_UserTable(users);
+            new User_tableDao().insert_UserTable(users);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("state", 1);
             result.add(map);

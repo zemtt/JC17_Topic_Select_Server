@@ -1,5 +1,8 @@
 package com.jc17.select.dao;
 
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Report;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -108,7 +111,9 @@ public class ReportDao {
             else{
                 finalsql= GET_REPORT_SQL+ " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Report report = new Report();
                 report.setReport_id(rs.getString("REPORT_ID"));

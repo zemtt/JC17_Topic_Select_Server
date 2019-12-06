@@ -1,5 +1,8 @@
 package com.jc17.select.dao;
 
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Subject;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -96,7 +99,7 @@ public class SubjectDao {
         return subject;
     }
 
-    private static final String GET_SUBJECT_SQL="SELECT SUB_ID,T_ID,SUB_INFO,SUB_REQUIREMENTS, ASSESSMENT,STUMAX,STUSELE FROM SUBJECT";
+    private static final String GET_SUBJECT_SQL="SELECT SUB_ID,T_ID,SUB_INFO,SUB_REQUIREMENTS, ASSESSMENT,STUMAX,STUSELE,SUBN FROM SUBJECT";
     public List<Subject> get_Subject(String sql)
     {
         List<Subject> subjects = new ArrayList<Subject>();
@@ -121,6 +124,7 @@ public class SubjectDao {
                 subject.setAssessment(rs.getString(5));
                 subject.setStumax(rs.getInt(6));
                 subject.setStusele(rs.getInt(7));
+                subject.setSubno(rs.getString(8));
                 subjects.add(subject);
             }
             rs.close();

@@ -1,6 +1,8 @@
 package com.jc17.select.dao;
 
-import javax.ws.rs.DELETE;
+import com.jc17.select.dao.utils.GetConn;
+import com.jc17.select.instances.Major;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,7 +96,9 @@ public class MajorDao {
             else{
                 finalsql=GET_Major_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Major major = new Major();
                 major.setMajor_id(rs.getString("MAJOR_ID"));

@@ -1,6 +1,7 @@
 package com.jc17.select.dao;
 
-import javax.xml.transform.Result;
+import com.jc17.select.instances.Commu;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,7 +106,9 @@ public class CommuDao {
             else{
                 finalsql=GET_COMMU_SQL + " WHERE " + sql;
             }
-            rs = pstm.executeQuery(finalsql);
+            //rs = pstm.executeQuery(finalsql);
+            pstm = conn.prepareStatement(finalsql);
+            rs = pstm.executeQuery();
             while(rs.next()) {
                 Commu commu = new Commu();
                 commu.setCommu_id(rs.getString("COMMU_ID"));
