@@ -7,6 +7,7 @@ import com.jc17.select.serverCore.resources.msgList.msgListResource;
 import com.jc17.select.serverCore.resources.msgReceiverList.msgRecieverListResource;
 import com.jc17.select.serverCore.resources.report.reportResource;
 import com.jc17.select.serverCore.resources.reportList.reportListResource;
+import com.jc17.select.serverCore.resources.setRecord2.setRecord2Resource;
 import com.jc17.select.serverCore.resources.ssublog.ssublogResource;
 import com.jc17.select.serverCore.resources.studentList.studentListResource;
 import com.jc17.select.serverCore.resources.studentSubjectscore.StudentsubjectscoreResource;
@@ -80,5 +81,6 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new msgListResource());
         environment.jersey().register(new msgResource());
         environment.jersey().register(new msgRecieverListResource());
+        environment.jersey().register(new setRecord2Resource());
     }
 }

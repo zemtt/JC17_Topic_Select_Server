@@ -2,6 +2,10 @@ package com.jc17.select.serverCore.resources.Studentsubjectscore;
 
 
 import com.jc17.select.dao.*;
+import com.jc17.select.instances.Report;
+import com.jc17.select.instances.Ssublog;
+import com.jc17.select.instances.Student;
+import com.jc17.select.instances.User_table;
 import com.jc17.select.serverCore.resources.utils.ReturnObject;
 import com.jc17.select.serverCore.userAuth.SysUser;
 import io.dropwizard.auth.Auth;
