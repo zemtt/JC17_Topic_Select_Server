@@ -16,19 +16,19 @@ public class TeacherDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_TEACHER_SQL = "INSERT INTO TEACHER VALUES(?,?,?,?,?,?,?)";
+    private static final String INSERT_TEACHER_SQL = "INSERT INTO TEACHER VALUES(replace(NEWID(),'-',''),?,?,?,?,?,?)";
 
     public void insert_Teacher(Teacher teacher) {
         PreparedStatement pstm = null;
         try {
             pstm = conn.prepareStatement(INSERT_TEACHER_SQL);
-            pstm.setString(1, teacher.getT_id());
-            pstm.setString(2, teacher.getTno());
-            pstm.setString(3, teacher.getTn());
-            pstm.setDate(4, teacher.getBirth());
-            pstm.setString(5, teacher.getMajor_id());
-            pstm.setString(6, teacher.getUser_id());
-            pstm.setString(7, teacher.getSex());
+            //pstm.setString(1, teacher.getT_id());
+            pstm.setString(1, teacher.getTno());
+            pstm.setString(2, teacher.getTn());
+            pstm.setDate(3, teacher.getBirth());
+            pstm.setString(4, teacher.getMajor_id());
+            pstm.setString(5, teacher.getUser_id());
+            pstm.setString(6, teacher.getSex());
             pstm.executeUpdate();
             pstm.close();
         } catch (Exception e) {

@@ -3,6 +3,11 @@ package com.jc17.select.serverCore;
 import com.jc17.select.serverCore.resources.StudentGetSubID.StudentGetSubIDResource;
 import com.jc17.select.serverCore.resources.StudentGetselectrecord.StudentGetselectrecord;
 import com.jc17.select.serverCore.resources.StudentGetsubjectList.StudentGetsubjectList;
+import com.jc17.select.serverCore.resources.StudentReport.StudentReport;
+import com.jc17.select.serverCore.resources.StudentReportList.StudentReportList;
+
+import com.jc17.select.serverCore.resources.StudentReportUpdate.StudentReportUpdate;
+
 import com.jc17.select.serverCore.resources.Studentcreateselectsubject.Studentcreateselectsubject;
 import com.jc17.select.serverCore.resources.Studentdeleteallrecord.Studentdeleteallrecord;
 import com.jc17.select.serverCore.resources.Studentdeletesimplerecord.Studentdeletesimplerecord;
@@ -69,7 +74,9 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserListDeleteResource());
         environment.jersey().register(new UserAddResource());
 
-
+        environment.jersey().register(new StudentReport());
+        environment.jersey().register(new StudentReportList());
+        environment.jersey().register(new StudentReportUpdate());
         environment.jersey().register(new SubjectListResource());
         environment.jersey().register(new StudentsubjectscoreResource());
         environment.jersey().register(new StudentGetSubIDResource());
@@ -80,6 +87,7 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new Studenteditorpriority());
         environment.jersey().register(new Studentdeletesimplerecord());
         environment.jersey().register(new Studentdeleteallrecord());
+
 
 
 

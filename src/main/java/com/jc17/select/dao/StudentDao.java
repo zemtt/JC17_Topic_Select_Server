@@ -14,19 +14,19 @@ public class StudentDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private final String INSERT_STUDENT_SQL = "INSERT INTO STUDENT VALUES (?,?,?,?,?,?,?);";
+    private final String INSERT_STUDENT_SQL = "INSERT INTO STUDENT VALUES (replace(NEWID(),'-',''),?,?,?,?,?,?);";
     public void insertStudent(Student student)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(INSERT_STUDENT_SQL);
-            pstm.setString(1,student.getS_id());
-            pstm.setString(2,student.getSno());
-            pstm.setString(3,student.getSn());
-            pstm.setString( 4,student.getSex());
-            pstm.setDate(5, student.getBirth());
-            pstm.setString(6,student.getMajor_id());
-            pstm.setString(7,student.getUser_id());
+            //pstm.setString(1,student.getS_id());
+            pstm.setString(1,student.getSno());
+            pstm.setString(2,student.getSn());
+            pstm.setString( 3,student.getSex());
+            pstm.setDate(4, student.getBirth());
+            pstm.setString(5,student.getMajor_id());
+            pstm.setString(6,student.getUser_id());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){
@@ -83,10 +83,10 @@ public class StudentDao {
                 student.setS_id(rs.getString(1));
                 student.setSno(rs.getString(2));
                 student.setSn(rs.getString(3));
-                student.setSex(rs.getString(5));
-                student.setBirth(rs.getDate(6));
-                student.setMajor_id(rs.getString(7));
-                student.setUser_id(rs.getString(8));
+                student.setSex(rs.getString(4));
+                student.setBirth(rs.getDate(5));
+                student.setMajor_id(rs.getString(6));
+                student.setUser_id(rs.getString(7));
                 rs.close();
                 pstm.close();
             }

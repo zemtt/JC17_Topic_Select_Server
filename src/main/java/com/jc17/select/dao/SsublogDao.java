@@ -16,17 +16,17 @@ public class SsublogDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_SSUBLOG_SQL="INSERT INTO SSUBLOG VALUES(?,?,?,?,?,?)";
+    private static final String INSERT_SSUBLOG_SQL="INSERT INTO SSUBLOG VALUES(replace(NEWID(),'-',''),?,?,?,?,?)";
     public void insert_Ssublog(Ssublog ssublog) {
         PreparedStatement pstm = null;
         try{
             pstm=conn.prepareStatement(INSERT_SSUBLOG_SQL);
-            pstm.setString(1,ssublog.getSsublog_id());
-            pstm.setString(2,ssublog.getSub_id());
-            pstm.setString(3,ssublog.getS_id());
-            pstm.setInt(4,ssublog.getPrio());
-            pstm.setInt(5,ssublog.getSchs());
-            pstm.setInt(6,ssublog.getRchs());
+            //pstm.setString(1,ssublog.getSsublog_id());
+            pstm.setString(1,ssublog.getSub_id());
+            pstm.setString(2,ssublog.getS_id());
+            pstm.setInt(3,ssublog.getPrio());
+            pstm.setInt(4,ssublog.getSchs());
+            pstm.setInt(5,ssublog.getRchs());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){
