@@ -36,6 +36,7 @@ public class UserStateUpdateResource {
             List<Object> result = new ArrayList<>();
             User_table users = new User_tableDao().get_User_Table_By_Id(userid.get().toString());
 //            List<User_table> users = new User_tableDao().get_User_Table("");
+            //
             users.setUser_account(account.get().toString());
             users.setPassword(passworld.get().toString());
             users.setRights(Integer.parseInt(usertype.get().toString()));
