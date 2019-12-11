@@ -27,7 +27,6 @@ public class UserListDeleteResource {
         if (!user.isAdmin()) {
             returnObj.setError_code(1);
             returnObj.setData("非法请求");
-            //
             return returnObj;
         }
         try {
