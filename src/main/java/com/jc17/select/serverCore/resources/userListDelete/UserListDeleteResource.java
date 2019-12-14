@@ -21,6 +21,7 @@ public class UserListDeleteResource {
     public UserListDeleteResource() {
     }
 
+    //
     @DELETE
     public ReturnObject getTest(@QueryParam("userid") Optional userid, @Auth SysUser user) {
         ReturnObject returnObj = new ReturnObject();
