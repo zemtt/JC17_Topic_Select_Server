@@ -52,8 +52,8 @@ public class ssublogResource {
                         t.put("status","已接收");
                     else
                         t.put("status","未接收");
-                    //t.put("studentinfo",i)
-                    //studentinfo 上传附件？不上传附件就要写一个表
+                    t.put("studentinfo",i.getStu_content());
+                    t.put("file_url",i.getFile_url());
 
                     result.add(t);
                 }

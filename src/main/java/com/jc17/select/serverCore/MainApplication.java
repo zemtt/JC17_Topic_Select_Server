@@ -1,18 +1,15 @@
 package com.jc17.select.serverCore;
 
-import com.jc17.select.serverCore.resources.StudentGetSubID.StudentGetSubIDResource;
-import com.jc17.select.serverCore.resources.StudentGetselectrecord.StudentGetselectrecord;
-import com.jc17.select.serverCore.resources.StudentGetsubjectList.StudentGetsubjectList;
-import com.jc17.select.serverCore.resources.StudentReport.StudentReport;
-import com.jc17.select.serverCore.resources.StudentReportList.StudentReportList;
-
-import com.jc17.select.serverCore.resources.StudentReportUpdate.StudentReportUpdate;
-
-import com.jc17.select.serverCore.resources.Studentcreateselectsubject.Studentcreateselectsubject;
-import com.jc17.select.serverCore.resources.Studentdeleteallrecord.Studentdeleteallrecord;
-import com.jc17.select.serverCore.resources.Studentdeletesimplerecord.Studentdeletesimplerecord;
-import com.jc17.select.serverCore.resources.Studenteditorpriority.Studenteditorpriority;
-import com.jc17.select.serverCore.resources.Studentsubjectlist.Studentsubjectlist;
+import com.jc17.select.serverCore.resources.Subject.SubjectSource;
+import com.jc17.select.serverCore.resources.getMajors.getMajorsResource;
+import com.jc17.select.serverCore.resources.msg.msgResource;
+import com.jc17.select.serverCore.resources.msgList.msgListResource;
+import com.jc17.select.serverCore.resources.msgReceiverList.msgRecieverListResource;
+import com.jc17.select.serverCore.resources.report.reportResource;
+import com.jc17.select.serverCore.resources.reportList.reportListResource;
+import com.jc17.select.serverCore.resources.setRecord2.setRecord2Resource;
+import com.jc17.select.serverCore.resources.ssublog.ssublogResource;
+import com.jc17.select.serverCore.resources.studentList.studentListResource;
 import com.jc17.select.serverCore.resources.studentSubjectscore.StudentsubjectscoreResource;
 import com.jc17.select.serverCore.resources.subjectList.SubjectListResource;
 import com.jc17.select.serverCore.resources.userAdd.UserAddResource;
@@ -79,23 +76,16 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new StudentReportUpdate());
         environment.jersey().register(new SubjectListResource());
         environment.jersey().register(new StudentsubjectscoreResource());
-        environment.jersey().register(new StudentGetSubIDResource());
-        environment.jersey().register(new StudentGetsubjectList());
-        environment.jersey().register(new Studentsubjectlist());//学生志愿列表
-        environment.jersey().register(new StudentGetselectrecord());
-        environment.jersey().register(new Studentcreateselectsubject());
-        environment.jersey().register(new Studenteditorpriority());
-        environment.jersey().register(new Studentdeletesimplerecord());
-        environment.jersey().register(new Studentdeleteallrecord());
-
-
-
-
-
-
-
-
-
+        environment.jersey().register(new SubjectSource());
+        environment.jersey().register(new getMajorsResource());
+        environment.jersey().register(new studentListResource());
+        environment.jersey().register(new reportListResource());
+        environment.jersey().register(new reportResource());
+        environment.jersey().register(new ssublogResource());
+        environment.jersey().register(new msgListResource());
+        environment.jersey().register(new msgResource());
+        environment.jersey().register(new msgRecieverListResource());
+        environment.jersey().register(new setRecord2Resource());
     }
 }
 

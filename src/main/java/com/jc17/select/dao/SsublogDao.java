@@ -16,7 +16,7 @@ public class SsublogDao {
         this.conn = new GetConn().GetConnection();
     }
 
-    private static final String INSERT_SSUBLOG_SQL="INSERT INTO SSUBLOG VALUES(replace(NEWID(),'-',''),?,?,?,?,?)";
+    private static final String INSERT_SSUBLOG_SQL="INSERT INTO SSUBLOG VALUES(replace(NEWID(),'-',''),?,?,?,?,?,?,?)";
     public void insert_Ssublog(Ssublog ssublog) {
         PreparedStatement pstm = null;
         try{
@@ -27,6 +27,8 @@ public class SsublogDao {
             pstm.setInt(3,ssublog.getPrio());
             pstm.setInt(4,ssublog.getSchs());
             pstm.setInt(5,ssublog.getRchs());
+            pstm.setString(6,ssublog.getStu_content());
+            pstm.setString(7,ssublog.getFile_url());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){
@@ -34,18 +36,20 @@ public class SsublogDao {
         }
     }
 
-    private static final String UPDATE_SSUBLOG_SQL="UPDATE SSUBLOG SET SUB_ID=?,S_ID=?,PRIO=?,SCHS=?,RCHS=? WHERE SSUBLOG_ID=?";
+    private static final String UPDATE_SSUBLOG_SQL="UPDATE SSUBLOG SET SUB_ID=?,S_ID=?,PRIO=?,SCHS=?,RCHS=?,STU_CONTENT=?,FILE_URL=? WHERE SSUBLOG_ID=?";
     public void update_Ssublog(Ssublog ssublog)
     {
         PreparedStatement pstm = null;
         try{
             pstm = conn.prepareStatement(UPDATE_SSUBLOG_SQL);
-            pstm.setString(6,ssublog.getSsublog_id());
+            pstm.setString(8,ssublog.getSsublog_id());
             pstm.setString(1,ssublog.getSub_id());
             pstm.setString(2,ssublog.getS_id());
             pstm.setInt(3,ssublog.getPrio());
             pstm.setInt(4,ssublog.getSchs());
             pstm.setInt(5,ssublog.getRchs());
+            pstm.setString(6,ssublog.getStu_content());
+            pstm.setString(7,ssublog.getFile_url());
             pstm.executeUpdate();
             pstm.close();
         }catch(Exception e){
@@ -67,7 +71,7 @@ public class SsublogDao {
         }
     }
 
-    private static final String GET_BY_ID_SSUBLOG_SQL="SELECT SSUBLOG_ID,SUB_ID,S_ID,PRIO,SCHS,RCHS FROM SSUBLOG WHERE SSUBLOG_ID=?";
+    private static final String GET_BY_ID_SSUBLOG_SQL="SELECT SSUBLOG_ID,SUB_ID,S_ID,PRIO,SCHS,RCHS,STU_CONTENT,FILE_URL FROM SSUBLOG WHERE SSUBLOG_ID=?";
     public Ssublog get_Ssublog_By_Id(String ssublog_id)
     {
         Ssublog ssublog=new Ssublog();
@@ -84,6 +88,8 @@ public class SsublogDao {
                 ssublog.setPrio(rs.getInt(4));
                 ssublog.setSchs(rs.getInt(5));
                 ssublog.setRchs(rs.getInt(6));
+                ssublog.setStu_content(rs.getString(7));
+                ssublog.setFile_url(rs.getString(8));
             }
             rs.close();
             pstm.close();
@@ -93,7 +99,7 @@ public class SsublogDao {
         return ssublog;
     }
 
-    private static final String GET_SSUBLOG_SQL="SELECT SSUBLOG_ID,SUB_ID,S_ID,PRIO,SCHS,RCHS FROM SSUBLOG";
+    private static final String GET_SSUBLOG_SQL="SELECT SSUBLOG_ID,SUB_ID,S_ID,PRIO,SCHS,RCHS,STU_CONTENT,FILE_URL FROM SSUBLOG";
     public List<Ssublog> get_Ssublog(String sql)
     {
         List<Ssublog> ssublogs = new ArrayList<Ssublog>();
@@ -117,6 +123,8 @@ public class SsublogDao {
                 ssublog.setPrio(rs.getInt(4));
                 ssublog.setSchs(rs.getInt(5));
                 ssublog.setRchs(rs.getInt(6));
+                ssublog.setStu_content(rs.getString(7));
+                ssublog.setFile_url(rs.getString(8));
                 ssublogs.add(ssublog);
             }
             rs.close();

@@ -7,6 +7,8 @@ public class Ssublog {
     private int prio;
     private int schs;
     private int rchs;
+    private String stu_content;
+    private String file_url;
 
 
     public String getSsublog_id() {
@@ -55,5 +57,21 @@ public class Ssublog {
 
     public void setRchs(int rchs) {
         this.rchs = rchs;
+    }
+
+    public String getStu_content() {
+        return stu_content;
+    }
+
+    public void setStu_content(String stu_content) {
+        this.stu_content = stu_content;
+    }
+
+    public String getFile_url() {
+        return file_url;
+    }
+
+    public void setFile_url(String file_url) {
+        this.file_url = file_url;
     }
 }
