@@ -71,6 +71,10 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new UserListUpdateResource());
         environment.jersey().register(new UserListDeleteResource());
         environment.jersey().register(new UserAddResource());
+
+        environment.jersey().register(new StudentReport());
+        environment.jersey().register(new StudentReportList());
+        environment.jersey().register(new StudentReportUpdate());
         environment.jersey().register(new SubjectListResource());
         environment.jersey().register(new StudentsubjectscoreResource());
         environment.jersey().register(new SubjectSource());
@@ -86,3 +90,8 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new SUManageResource());
     }
 }
+
+
+
+
+
