@@ -1,5 +1,6 @@
 package com.jc17.select.serverCore;
 
+import com.jc17.select.serverCore.resources.SUManage.SUManageResource;
 import com.jc17.select.serverCore.resources.Subject.SubjectSource;
 import com.jc17.select.serverCore.resources.getMajors.getMajorsResource;
 import com.jc17.select.serverCore.resources.msg.msgResource;
@@ -82,5 +83,6 @@ public class MainApplication extends Application<AppConfigure> {
         environment.jersey().register(new msgResource());
         environment.jersey().register(new msgRecieverListResource());
         environment.jersey().register(new setRecord2Resource());
+        environment.jersey().register(new SUManageResource());
     }
 }
